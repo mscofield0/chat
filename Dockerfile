@@ -121,15 +121,14 @@ ENV CONAN_SYSREQUIRES_SUDO 0
 # leaving this flag undefined can cause some installation failures.
 ENV CONAN_SYSREQUIRES_MODE enabled
 
+# ========== Set default Conan generator
+ENV CONAN_CMAKE_GENERATOR Ninja
+
 # ========== Setup dev environment
 ## Set locales
-RUN apt-get install -y locales \
-    && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
-    && dpkg-reconfigure --frontend=noninteractive locales \
-    && update-locale LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
-ENV LC_LANG en_US.UTF-8
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+ENV LC_LANG C.UTF-8
 
 ## Install: 
 ## - neovim -- text editor/IDE 
